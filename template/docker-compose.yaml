@@ -2,15 +2,15 @@ version: '3.1'
 
 services:
   app:
-    image: dst-joomla:php-7.4
-    working_dir: ${WORKDIR_CONTAINER}
+    image: pablo262/dst-joomla:php-7.4
+    working_dir: ${PHP_WORKDIR_CONTAINER}
     container_name: ${CONTAINER_NAME}
     volumes:
-      - ${PWD}${PROJECT_PATH}:${WORKDIR_CONTAINER}
-      - ${PWD}${PHP_INI_PATH}:/usr/local/etc/php
-      - ${PWD}${PHP_LOGS_PATH}:/var/log/apache2
+      - ${ROOT_PATH}${PHP_PROJECT_PATH}:${PHP_WORKDIR_CONTAINER}
+      - ${ROOT_PATH}${PHP_VIRTUALHOST_PATH}:/usr/local/etc/php/000-default.conf
+      - ${ROOT_PATH}${PHP_LOGS_PATH}:/var/log/apache2
     ports:
-      - ${WEB_PORT}:80
+      - ${PHP_WEB_PORT}:80
     depends_on:
       - db
 
@@ -23,11 +23,11 @@ services:
       MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
       MYSQL_DATABASE: ${DATABASE_NAME}
     volumes:
-      - ${PWD}${VOLUME_MIGRATIONS}:/docker-entrypoint-initdb.d
-      - ${PWD}${VOLUME_CONF}:/etc/mysql/conf.d
-      - ${PWD}${VOLUME_DATA}:/var/lib/mysql
-      - ${PWD}${VOLUME_LOGS}:/var/log/mysql
-      - ${PWD}${VOLUME_BACKUPS}:/backups
+      - ${ROOT_PATH}${VOLUME_MIGRATIONS}:/docker-entrypoint-initdb.d
+      - ${ROOT_PATH}${VOLUME_CONF}:/etc/mysql/conf.d
+      - ${ROOT_PATH}${VOLUME_DATA}:/var/lib/mysql
+      - ${ROOT_PATH}${VOLUME_LOGS}:/var/log/mysql
+      - ${ROOT_PATH}${VOLUME_BACKUPS}:/backups
 
   adminer:
     image: adminer
