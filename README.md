@@ -22,7 +22,24 @@ Template of Joomla to use in any project with **docker**.
 ---
 
 ## How to use
-...
+
+Create root folder of the project
+```sh
+mkdir folder_project
+```
+Clone this project in folder root
+Move template files
+```sh
+mv template_joomla_projects/template/* .
+mv template_joomla_projects/template/.* .
+```
+
+Delete unnecessary files
+```sh
+rm -rf template_joomla_projects
+rm -rf dev/index.html
+rm -rf mysql/data/index.html
+```
 
 ---
 
