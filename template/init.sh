@@ -92,12 +92,24 @@ delete_unnecessary_files()
 	rm -rf mysql/data/index.html
 }
 
+get_vitualhost_file()
+{
+	# Check md5 of 000-default.conf file, if not is the same, this file were download of github
+	print_text_br "TODO: get_vitualhost_file()" $YELLOW
+}
+
 main()
 {
 	local env_file=$1
 	exist_file $env_file
 
-	local virtualhost_file=$(read_var $env_file PHP_VIRTUALHOST_PATH)
+	local virtualhost_path=$(read_var $env_file PHP_VIRTUALHOST_PATH)
+	local virtualhost_file=$(read_var $env_file PHP_VIRTUALHOST_FILE)
+
+	get_vitualhost_file
+
+	virtualhost_file="${virtualhost_path}${virtualhost_file}"
+	
 	exist_file $virtualhost_file
 
 	set_virtualhost_file $env_file $virtualhost_file
