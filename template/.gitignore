@@ -1,4 +1,5 @@
-### Ignore files of Joomla ###
+### Ignore files of Project ###
+.env
 
 ### Ignore files of PHP ###
 /php/logs/*
@@ -12,7 +13,7 @@
 # =====================================
 
 
-### Not ignore files of Joomla ###
+### Not ignore files of Project ###
 
 ### Ignore files of PHP ###
 !/php/logs/index.html
