@@ -109,7 +109,7 @@ main()
 	get_vitualhost_file
 
 	virtualhost_file="${virtualhost_path}${virtualhost_file}"
-	
+
 	exist_file $virtualhost_file
 
 	set_virtualhost_file $env_file $virtualhost_file
